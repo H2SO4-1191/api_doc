@@ -41,6 +41,9 @@ A small tool to simplify documenting APIs in order to make communication between
 
 <p align="center">
   <img src="screenshots/endpoint_dropped.jpeg" width="45%" />
+</p>
+
+<p align="center">
   <img src="screenshots/search.jpeg" width="45%" />
 </p>
 
