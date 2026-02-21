@@ -1,6 +1,6 @@
 # API Doc
 
-A small tool to simplify documenting APIs.
+A small tool to simplify documenting APIs in order to make communication between backend and frontend developers easier
 
 ## Features
 
@@ -30,9 +30,19 @@ A small tool to simplify documenting APIs.
 
 ## Screenshots
 
-![App Screenshot](screenshots/home.jpeg)
-![App Screenshot](screenshots/load_json.jpeg) ![App Screenshot](screenshots/json_loaded.jpeg)
-![App Screenshot](screenshots/endpoint_dropped.jpeg) ![App Screenshot](screenshots/search.jpeg)
+<p align="center">
+  <img src="screenshots/home.jpeg" width="45%" />
+  <img src="screenshots/load_json.jpeg" width="45%" />
+</p>
+
+<p align="center">
+  <img src="screenshots/json_loaded.jpeg" width="45%" />
+  <img src="screenshots/endpoint_dropped.jpeg" width="45%" />
+</p>
+
+<p align="center">
+  <img src="screenshots/search.jpeg" width="45%" />
+</p>
 
 ## Author
 
