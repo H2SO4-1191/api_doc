@@ -1,0 +1,128 @@
+{
+  "title": "Example API Documentation",
+  "base_url": "https://example.com",
+  "endpoints": [
+    {
+      "title": "Get All Users",
+      "url": "/api/v1/users",
+      "method": "GET",
+      "permissions": ["read:users", "admin"],
+      "description": "Retrieves a list of all users in the system",
+      "requestBody": null,
+      "responses": {
+        "success": {
+          "status": 200,
+          "body": {
+            "data": [
+              {
+                "id": 1,
+                "name": "John Doe",
+                "email": "john@example.com",
+                "role": "admin"
+              }
+            ],
+            "count": 1
+          }
+        },
+        "error": {
+          "status": 401,
+          "body": {
+            "error": "Unauthorized",
+            "message": "Invalid or missing authentication token"
+          }
+        }
+      }
+    },
+    {
+      "title": "Create User",
+      "url": "/api/v1/users",
+      "method": "POST",
+      "permissions": ["write:users", "admin"],
+      "description": "Creates a new user account",
+      "requestBody": {
+        "name": "Jane Smith",
+        "email": "jane@example.com",
+        "password": "securePassword123",
+        "role": "user"
+      },
+      "responses": {
+        "success": {
+          "status": 201,
+          "body": {
+            "data": {
+              "id": 2,
+              "name": "Jane Smith",
+              "email": "jane@example.com",
+              "role": "user",
+              "createdAt": "2024-01-15T10:30:00Z"
+            },
+            "message": "User created successfully"
+          }
+        },
+        "error": {
+          "status": 400,
+          "body": {
+            "error": "Bad Request",
+            "message": "Email already exists",
+            "field": "email"
+          }
+        }
+      }
+    },
+    {
+      "title": "Update User",
+      "url": "/api/v1/users/{id}",
+      "method": "PUT",
+      "permissions": ["write:users", "admin"],
+      "description": "Updates an existing user's information",
+      "requestBody": {
+        "name": "John Updated",
+        "email": "john.updated@example.com",
+        "role": "moderator"
+      },
+      "responses": {
+        "success": {
+          "status": 200,
+          "body": {
+            "data": {
+              "id": 1,
+              "name": "John Updated",
+              "email": "john.updated@example.com",
+              "role": "moderator",
+              "updatedAt": "2024-01-15T11:00:00Z"
+            },
+            "message": "User updated successfully"
+          }
+        },
+        "error": {
+          "status": 404,
+          "body": {
+            "error": "Not Found",
+            "message": "User with specified ID does not exist"
+          }
+        }
+      }
+    },
+    {
+      "title": "Delete User",
+      "url": "/api/v1/users/{id}",
+      "method": "DELETE",
+      "permissions": ["delete:users", "admin"],
+      "description": "Permanently deletes a user account",
+      "requestBody": null,
+      "responses": {
+        "success": {
+          "status": 204,
+          "body": null
+        },
+        "error": {
+          "status": 403,
+          "body": {
+            "error": "Forbidden",
+            "message": "You don't have permission to delete this user"
+          }
+        }
+      }
+    }
+  ]
+}
