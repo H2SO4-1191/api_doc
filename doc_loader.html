@@ -384,29 +384,39 @@
         }
 
         renderResponses() {
+          const responseEntries = Object.entries(this.data.responses);
+
+          const rendered = responseEntries
+            .map(([key, value]) => {
+              const isSuccess = key.toLowerCase().startsWith("success");
+              const typeClass = isSuccess
+                ? "response-success"
+                : "response-error";
+              const label = key
+                .replace(/_/g, " ")
+                .replace(/\b\w/g, (c) => c.toUpperCase());
+
+              return `
+      <div class="response-section">
+        <div class="response-type ${typeClass}">
+          ${label} (${value.status})
+        </div>
+        ${
+          value.body
+            ? `<pre class="code-block">${JSON.stringify(value.body, null, 2)}</pre>`
+            : `<p style="color: #64748b; font-style: italic; margin-top: 8px;">No content returned</p>`
+        }
+      </div>
+    `;
+            })
+            .join("");
+
           return `
-                    <div class="section">
-                        <div class="section-title">Responses</div>
-                        
-                        <div class="response-section">
-                            <div class="response-type response-success">
-                                Success (${this.data.responses.success.status})
-                            </div>
-                            ${
-                              this.data.responses.success.body
-                                ? `<pre class="code-block">${JSON.stringify(this.data.responses.success.body, null, 2)}</pre>`
-                                : `<p style="color: #64748b; font-style: italic; margin-top: 8px;">No content returned</p>`
-                            }
-                        </div>
-                        
-                        <div class="response-section">
-                            <div class="response-type response-error">
-                                Error (${this.data.responses.error.status})
-                            </div>
-                            <pre class="code-block">${JSON.stringify(this.data.responses.error.body, null, 2)}</pre>
-                        </div>
-                    </div>
-                `;
+    <div class="section">
+      <div class="section-title">Responses</div>
+      ${rendered}
+    </div>
+  `;
         }
       }
 
